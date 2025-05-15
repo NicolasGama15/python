@@ -171,6 +171,7 @@
 8. [ ] **8. Seguridad y Criptografía**  
    - [Notebook](1. Python/1.3 Avanzado/notebooks/seguridad_criptografia.ipynb)  
    - Librerías: `cryptography`, `pyOpenSSL`, `pycrypto`  
+
 ---
 
 ## 2. Machine Learning
