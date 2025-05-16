@@ -10,13 +10,33 @@ path_md = "docs/index.md"
 with open(path_md, 'r', encoding='utf-8') as f:
     lines = f.readlines()
 
-# Plantilla mínima para un notebook vacío
-notebook_template = {
-    "cells": [],
-    "metadata": {},
-    "nbformat": 4,
-    "nbformat_minor": 2
-}
+# Crear contenido inicial del notebook con secciones en Markdown
+def crear_notebook_con_secciones(titulo):
+    headers = [
+        "1.  **Título del Tema**",
+        "2.  **Explicación Conceptual Detallada**",
+        "3.  **Sintaxis y Ejemplos Básicos**",
+        "4.  **Documentación y Recursos Clave**",
+        "5.  **Ejemplos de Código Prácticos**",
+        "6.  **Ejercicio Práctico**",
+        "7.  **Conexión con Otros Temas**",
+        "8.  **Aplicaciones en el Mundo Real**"
+    ]
+
+    cells = [
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [f"# {header}\n"]
+        } for header in headers
+    ]
+
+    return {
+        "cells": cells,
+        "metadata": {},
+        "nbformat": 4,
+        "nbformat_minor": 2
+    }
 
 # Función para sanear nombres de archivos/carpetas
 def sanear(nombre):
@@ -64,11 +84,11 @@ def crear_notebooks_por_subtema(temas, base_dir=None):
                 # Ruta completa del notebook numerado
                 notebook_path = os.path.join(dir_path, archivo_numerado)
 
-                # Crear notebook vacío si no existe
+                # Crear notebook con secciones si no existe
                 if not os.path.exists(notebook_path):
+                    notebook_con_secciones = crear_notebook_con_secciones(nombre_saneado)
                     with open(notebook_path, 'w', encoding='utf-8') as f:
-                        json.dump(notebook_template, f, ensure_ascii=False, indent=2)
-                    print(f"Creado: {notebook_path}")
+                        json.dump(notebook_con_secciones, f, ensure_ascii=False, indent=2)
                 else:
                     print(f"Ya existe: {notebook_path}")
     print("Proceso completado: notebooks numerados por subtema creados.")
