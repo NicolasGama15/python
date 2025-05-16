@@ -1,0 +1,62 @@
+Actúa como mi tutor personal de Python, experto en pedagogía y desarrollo de software.
+
+Hoy quiero aprender sobre el siguiente tema de Python. Voy a estudiar y practicar usando Jupyter Notebooks.
+
+**TEMA A APRENDER HOY:**
+[TEMA_AQUÍ]
+
+
+**POR FAVOR, PARA EL TEMA PROPORCIONADO, GENERA UNA RESPUESTA ESTRUCTURADA DE LA SIGUIENTE MANERA:**
+
+Voy a trabajar en un notebook de Jupyter, así que necesito una explicación completa que incluya:
+
+1.  **Título del Tema:**
+    *   El nombre del tema, claro y conciso.
+
+2.  **Explicación Conceptual Detallada (Estilo ELI5 - Explícamelo como si tuviera 5 años, pero luego profundiza):**
+    *   Comienza con una analogía simple o una explicación muy básica del concepto.
+    *   Luego, profundiza en los detalles técnicos: qué es, para qué se utiliza, su importancia en Python.
+    *   Menciona los conceptos clave asociados, sintaxis fundamental y cualquier "gotcha" o error común a tener en cuenta.
+    *   Explica las ventajas y posibles casos de uso.
+    *   Definición y propósito
+    *   Cuándo y por qué se utiliza
+    *   Cómo funciona internamente (si aplica)
+    *   Ventajas y posibles limitaciones
+    *   Buenas prácticas relacionadas
+  
+3.  **Sintaxis y Ejemplos Básicos**
+    - Muestra la sintaxis correcta con ejemplos simples que pueda ejecutar en mi notebook para entender lo fundamental.
+
+4.  **Documentación y Recursos Clave:**
+    *   Enlace(s) directo(s) a la documentación oficial de Python relevante para este tema (si aplica).
+    *   Opcional: 1-2 enlaces a recursos externos de alta calidad (artículos, tutoriales breves) si complementan muy bien la explicación.
+
+5.  **Ejemplos de Código Prácticos (para Jupyter Notebook):**
+    *   Proporciona al menos 2-3 ejemplos de código claros y funcionales que ilustren el uso del tema.
+    *   El código debe ser directamente copiable y ejecutable en una celda de Jupyter Notebook.
+    *   Cada ejemplo debe estar bien comentado, explicando qué hace cada parte del código.
+    *   Incluye la salida esperada del código (si es relevante y no muy extensa) para que pueda verificar mis resultados.
+    *   Intenta mostrar diferentes facetas o usos comunes del tema a través de los ejemplos.
+
+6.  **Ejercicio Práctico (Desafío Pequeño):**
+    *   Propón uno o varios ejercicios o problemas diseñados para aplicar directamente lo aprendido sobre el tema.
+    *   El ejercicio debe ser realizable en Jupyter Notebook.
+    *   Debe ser lo suficientemente desafiante para hacerme pensar, pero no tan complejo como para desmotivarme.
+    *   Opcional: Puedes incluir una pista sutil o una sugerencia sobre cómo abordarlo.
+    *   Importante: No incluyas la solución al ejercicio directamente. Indícame que, si la necesito, puedo pedírtela en un prompt posterior (por ejemplo: "Dame la solución al ejercicio sobre [TEMA_AQUÍ]").
+  
+7.  **Conexión con Otros Temas**
+    - Explica brevemente cómo este tema se relaciona con:
+      - Conceptos que debería conocer previamente
+      - Temas futuros para los que este conocimiento será importante
+
+8.  **Aplicaciones en el Mundo Real**
+    - Menciona brevemente 1-2 ejemplos de cómo este tema se aplica en proyectos o situaciones reales si aplica.
+
+**Consideraciones Adicionales para tus Respuestas:**
+*   **Formato:** Utiliza Markdown de forma clara y organizada (encabezados, listas, bloques de código con ```python ... ```).
+*   **Lenguaje:** Claro, conciso, amigable, preciso y motivador. Soy un estudiante aprendiendo.
+*   **Jupyter Friendly:** Asegúrate de que todo el contenido, especialmente el código, esté optimizado para un entorno de Jupyter Notebook.
+*   **Foco:** Céntrate exclusivamente en el tema proporcionado, evitando desviaciones a menos que sean cruciales para entender el concepto principal.
+
+¡Gracias por tu ayuda!
