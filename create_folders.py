@@ -1,146 +1,77 @@
 import os
-import nbformat
+import json
+import re
+from urllib.parse import unquote
 
-# List of notebook file paths
-notebooks = [
-    # 1. Python Básico
-    "1. Python/1.1 Basico/notebooks/sintaxis_tipos.ipynb",
-    "1. Python/1.1 Basico/notebooks/control_flujo.ipynb",
-    "1. Python/1.1 Basico/notebooks/funciones.ipynb",
-    "1. Python/1.1 Basico/notebooks/modulos_paquetes.ipynb",
-    "1. Python/1.1 Basico/notebooks/errores.ipynb",
-    "1. Python/1.1 Basico/notebooks/comprension_listas_generadores.ipynb",
-    "1. Python/1.1 Basico/notebooks/lambda.ipynb",
-    "1. Python/1.1 Basico/notebooks/manejo_archivos.ipynb",
-    "1. Python/1.1 Basico/notebooks/entorno_virtual.ipynb",
-    "1. Python/1.1 Basico/notebooks/gestion_dependencias.ipynb",
-    "1. Python/1.1 Basico/notebooks/documentacion_estilo.ipynb",
-    "1. Python/1.1 Basico/notebooks/version_control.ipynb",
-    "1. Python/1.1 Basico/notebooks/pruebas_unitarias.ipynb",
-    "1. Python/1.1 Basico/notebooks/tipado_estatico.ipynb",
-    "1. Python/1.1 Basico/notebooks/log_debug.ipynb",
-    "1. Python/1.1 Basico/notebooks/argumentos_linea.ipynb",
-    "1. Python/1.1 Basico/notebooks/testing_integracion.ipynb",
-    "1. Python/1.1 Basico/notebooks/manejo_datos.ipynb",
-    "1. Python/1.1 Basico/notebooks/visualizacion_datos.ipynb",
-    "1. Python/1.1 Basico/notebooks/apis_webscraping.ipynb",
-    "1. Python/1.1 Basico/notebooks/desarrollo_web.ipynb",
-    # Python Intermedio
-    "1. Python/1.2 Intermedio/notebooks/poo.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/decoradores.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/context_managers.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/generadores_iteradores.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/archivos_Avanzado.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/anotaciones_tipo_avanzadas.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/async_redes.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/performance.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/i18n.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/patrones_diseno.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/profiling_optimizacion.ipynb",
-    "1. Python/1.2 Intermedio/notebooks/typing_type_hints.ipynb",
-    # Python Avanzado
-    "1. Python/1.3 Avanzado/notebooks/metaprogramacion_data_model.ipynb",
-    "1. Python/1.3 Avanzado/notebooks/concurrencia_paralelismo.ipynb",
-    "1. Python/1.3 Avanzado/notebooks/empaquetado_distribucion.ipynb",
-    "1. Python/1.3 Avanzado/notebooks/testing_calidad_codigo.ipynb",
-    "1. Python/1.3 Avanzado/notebooks/cicd_proyectos.ipynb",
-    "1. Python/1.3 Avanzado/notebooks/extension_c_cython.ipynb",
-    "1. Python/1.3 Avanzado/notebooks/embebido_distribucion.ipynb",
-    "1. Python/1.3 Avanzado/notebooks/seguridad_criptografia.ipynb",
-    # Machine Learning - Fundamentos
-    "2. Machine_learning/1.1 Basico/notebooks/aprendizaje_supervisado.ipynb",
-    "2. Machine_learning/1.1 Basico/notebooks/aprendizaje_no_supervisado.ipynb",
-    "2. Machine_learning/1.1 Basico/notebooks/validacion_modelos.ipynb",
-    "2. Machine_learning/1.1 Basico/notebooks/visualizacion_datos.ipynb",
-    "2. Machine_learning/1.1 Basico/notebooks/etica_privacidad_datos.ipynb",
-    # Machine Learning - Intermedio
-    "2. Machine_learning/1.2 Intermedio/notebooks/ingenieria_caracteristicas.ipynb",
-    "2. Machine_learning/1.2 Intermedio/notebooks/modelos_ensamblado.ipynb",
-    "2. Machine_learning/1.2 Intermedio/notebooks/optimizacion_hiperparametros.ipynb",
-    "2. Machine_learning/1.2 Intermedio/notebooks/reinforcement_learning.ipynb",
-    "2. Machine_learning/1.2 Intermedio/notebooks/interpretabilidad_fairness.ipynb",
-    # Machine Learning - Avanzado
-    "2. Machine_learning/1.3 Avanzado/notebooks/deep_learning_basico.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/redes_convolucionales.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/rnn_transformers.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/mlops_despliegue.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/federated_privacidad.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/modelos_generativos.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/optimizacion_inferencia_pruning.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/mlops_monitoreo_versionado.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/nlp.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/vision_computadora.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/series_temporales.ipynb",
-    "2. Machine_learning/1.3 Avanzado/notebooks/explicabilidad_fairness.ipynb",
-    # Bases de Datos
-    "3. Bases_datos/modelado/notebooks/normalizacion.ipynb",
-    "3. Bases_datos/modelado/notebooks/modelado_nosql.ipynb",
-    "3. Bases_datos/modelado/notebooks/serie_temporal.ipynb",
-    "3. Bases_datos/modelado/notebooks/bases_grafos.ipynb",
-    "3. Bases_datos/sql/notebooks/consultas_complejas.ipynb",
-    "3. Bases_datos/sql/notebooks/optimizacion_consultas.ipynb",
-    "3. Bases_datos/sql/notebooks/data_warehousing_olap.ipynb",
-    "3. Bases_datos/sql/notebooks/etl_calidad_datos.ipynb",
-    "3. Bases_datos/no_sql/notebooks/modelado_documentos.ipynb",
-    "3. Bases_datos/no_sql/notebooks/nosql_grafos.ipynb",
-    "3. Bases_datos/no_sql/notebooks/bases_memoria.ipynb",
-    "3. Bases_datos/integracion_datos/notebooks/etl_pipelines.ipynb",
-    "3. Bases_datos/integracion_datos/notebooks/data_warehousing_integration.ipynb",
-    "3. Bases_datos/administracion/notebooks/instalacion_configuracion.ipynb",
-    "3. Bases_datos/administracion/notebooks/backup_recuperacion.ipynb",
-    "3. Bases_datos/administracion/notebooks/replicacion.ipynb",
-    "3. Bases_datos/administracion/notebooks/seguridad_roles.ipynb",
-    "3. Bases_datos/administracion/notebooks/replicacion_multimaestro_ha.ipynb",
-    # Cloud Computing AWS
-    "4. Cloud_computing/1.1 Basico/aws/notebooks/conceptos_nube.ipynb",
-    "4. Cloud_computing/1.1 Basico/aws/notebooks/iam.ipynb",
-    "4. Cloud_computing/1.1 Basico/aws/notebooks/contenedores_nube.ipynb",
-    "4. Cloud_computing/1.2 Intermedio/aws/notebooks/compute_networking.ipynb",
-    "4. Cloud_computing/1.2 Intermedio/aws/notebooks/storage_bases_datos.ipynb",
-    "4. Cloud_computing/1.2 Intermedio/aws/notebooks/orquestacion_kubernetes.ipynb",
-    "4. Cloud_computing/1.2 Intermedio/aws/notebooks/cicd_aws.ipynb",
-    "4. Cloud_computing/1.3 Avanzado/aws/notebooks/serverless.ipynb",
-    "4. Cloud_computing/1.3 Avanzado/aws/notebooks/infraestructura_codigo.ipynb",
-    "4. Cloud_computing/1.3 Avanzado/aws/notebooks/monitorizacion_seguridad.ipynb",
-    "4. Cloud_computing/1.3 Avanzado/aws/notebooks/observabilidad_logging.ipynb",
-    "4. Cloud_computing/1.3 Avanzado/aws/notebooks/optimizacion_costos.ipynb",
-    # Desarrollo Web
-    "5. Desarrollo_web/1.1 Basico/notebooks/introduccion_http_servidores.ipynb",
-    "5. Desarrollo_web/1.1 Basico/notebooks/microframeworks.ipynb",
-    "5. Desarrollo_web/1.2 Intermedio/notebooks/frameworks_completos.ipynb",
-    "5. Desarrollo_web/1.2 Intermedio/notebooks/apis_rest_graphql.ipynb",
-    "5. Desarrollo_web/1.3 Avanzado/notebooks/websockets_real_time.ipynb",
-    "5. Desarrollo_web/1.3 Avanzado/notebooks/escalabilidad_cacheo.ipynb",
-    # DevOps
-    "6. Devops_contenedores/1.1 Basico/notebooks/introduccion_docker.ipynb",
-    "6. Devops_contenedores/1.1 Basico/notebooks/cicd_basico.ipynb",
-    "6. Devops_contenedores/1.1 Basico/notebooks/orquestacion.ipynb",
-    "6. Devops_contenedores/1.2 Intermedio/notebooks/kubernetes_fundamentos.ipynb",
-    "6. Devops_contenedores/1.2 Intermedio/notebooks/infraestructura_codigo.ipynb",
-    "6. Devops_contenedores/1.3 Avanzado/notebooks/gitops_automatizacion.ipynb",
-    "6. Devops_contenedores/1.3 Avanzado/notebooks/seguridad_cicd.ipynb",
-    # Seguridad
-    "7. Seguridad/1.1 Basico/notebooks/owasp_top_ten.ipynb",
-    "7. Seguridad/1.1 Basico/notebooks/gestion_secretos.ipynb",
-    "7. Seguridad/1.1 Basico/notebooks/principios_seguridad.ipynb",
-    "7. Seguridad/1.2 Intermedio/notebooks/hardening_servidores.ipynb",
-    "7. Seguridad/1.2 Intermedio/notebooks/autenticacion_autorizacion.ipynb",
-    "7. Seguridad/1.3 Avanzado/notebooks/auditorias_pentesting.ipynb",
-    "7. Seguridad/1.3 Avanzado/notebooks/respuesta_incidentes_forense.ipynb",
-    # Habilidades Blandas
-    "8. Habilidades_blandas/1.1 Basico/notebooks/git_flujos_trabajo.ipynb",
-    "8. Habilidades_blandas/1.1 Basico/notebooks/documentacion_tecnica.ipynb",
-    "8. Habilidades_blandas/1.2 Intermedio/notebooks/metodologias_agiles.ipynb",
-    "8. Habilidades_blandas/1.2 Intermedio/notebooks/gestion_proyectos.ipynb",
-    "8. Habilidades_blandas/1.3 Avanzado/notebooks/comunicacion_trabajo_equipo.ipynb",
-    "8. Habilidades_blandas/1.3 Avanzado/notebooks/mentoria_revision_codigo.ipynb",
-]
+# Ruta al archivo Markdown con los enlaces
+path_md = "docs/index.md"
 
-for nb_path in notebooks:
-    dir_path = os.path.dirname(nb_path)
-    os.makedirs(dir_path, exist_ok=True)
-    nb = nbformat.v4.new_notebook()
-    with open(nb_path, 'w', encoding='utf-8') as f:
-        nbformat.write(nb, f)
+# Leer todas las líneas del Markdown
+with open(path_md, 'r', encoding='utf-8') as f:
+    lines = f.readlines()
 
-print("Estructura de carpetas y notebooks vacíos creada exitosamente.")
+# Plantilla mínima para un notebook vacío
+notebook_template = {
+    "cells": [],
+    "metadata": {},
+    "nbformat": 4,
+    "nbformat_minor": 2
+}
+
+# Función para sanear nombres de archivos/carpetas
+def sanear(nombre):
+    nombre = nombre.strip()
+    nombre = re.sub(r"[\\/:*?\"<>|]", "", nombre)
+    nombre = nombre.replace(" ", "_")
+    return nombre
+
+# Extraer rutas de notebook del Markdown en estructura tema->subtema->rutas
+temas = {}
+for line in lines:
+    match = re.search(r'\[Notebook\]\((.+?)\)', line)
+    if not match:
+        continue
+    ruta_raw = match.group(1)
+    ruta = unquote(ruta_raw)
+    partes = ruta.split('/')
+    if len(partes) < 3:
+        # Se espera al menos tema/subtema/archivo
+        continue
+    tema, subtema = partes[0], partes[1]
+    temas.setdefault(tema, {}).setdefault(subtema, []).append(ruta)
+
+# Crear carpetas y notebooks vacíos con numeración por subtema
+def crear_notebooks_por_subtema(temas, base_dir=None):
+    if base_dir is None:
+        base_dir = os.getcwd()
+    for tema, subtemas in temas.items():
+        for subtema, rutas in subtemas.items():
+            for idx, ruta in enumerate(rutas, start=1):
+                partes = ruta.split('/')
+                *carpetas, archivo = partes
+                carpetas_saneadas = [sanear(c) for c in carpetas]
+                nombre_base, ext = os.path.splitext(archivo)
+                nombre_saneado = sanear(nombre_base)
+                # Prefijo de numeración por subtema
+                prefijo = f"{idx:02d}"
+                archivo_numerado = f"{prefijo}_{nombre_saneado}.ipynb"
+
+                # Crear ruta de carpetas
+                dir_path = os.path.join(base_dir, *carpetas_saneadas)
+                os.makedirs(dir_path, exist_ok=True)
+
+                # Ruta completa del notebook numerado
+                notebook_path = os.path.join(dir_path, archivo_numerado)
+
+                # Crear notebook vacío si no existe
+                if not os.path.exists(notebook_path):
+                    with open(notebook_path, 'w', encoding='utf-8') as f:
+                        json.dump(notebook_template, f, ensure_ascii=False, indent=2)
+                    print(f"Creado: {notebook_path}")
+                else:
+                    print(f"Ya existe: {notebook_path}")
+    print("Proceso completado: notebooks numerados por subtema creados.")
+
+# Ejecutar la función
+tmp_base = os.getcwd()
+crear_notebooks_por_subtema(temas, base_dir=tmp_base)
