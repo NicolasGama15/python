@@ -32,13 +32,14 @@ for line in lines:
     if not match:
         continue
     ruta_raw = match.group(1)
-    ruta = unquote(ruta_raw)
+    ruta = unquote(ruta_raw).replace('../', '')
     partes = ruta.split('/')
     if len(partes) < 3:
         # Se espera al menos tema/subtema/archivo
         continue
     tema, subtema = partes[0], partes[1]
     temas.setdefault(tema, {}).setdefault(subtema, []).append(ruta)
+    # print(temas)
 
 # Crear carpetas y notebooks vacíos con numeración por subtema
 def crear_notebooks_por_subtema(temas, base_dir=None):
@@ -53,8 +54,8 @@ def crear_notebooks_por_subtema(temas, base_dir=None):
                 nombre_base, ext = os.path.splitext(archivo)
                 nombre_saneado = sanear(nombre_base)
                 # Prefijo de numeración por subtema
-                prefijo = f"{idx:02d}"
-                archivo_numerado = f"{prefijo}_{nombre_saneado}.ipynb"
+                
+                archivo_numerado = f"{nombre_saneado}.ipynb"
 
                 # Crear ruta de carpetas
                 dir_path = os.path.join(base_dir, *carpetas_saneadas)
