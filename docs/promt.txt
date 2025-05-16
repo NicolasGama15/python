@@ -13,10 +13,10 @@ Voy a trabajar en un notebook de Jupyter, así que necesito una explicación com
 1.  **Título del Tema:**
     *   El nombre del tema, claro y conciso.
 
-2.  **Explicación Conceptual Detallada (Estilo ELI5 - Explícamelo como si tuviera 5 años, pero luego profundiza):**
+2.  **Explicación Conceptual Detallada**
     *   Comienza con una analogía simple o una explicación muy básica del concepto.
     *   Luego, profundiza en los detalles técnicos: qué es, para qué se utiliza, su importancia en Python.
-    *   Menciona los conceptos clave asociados, sintaxis fundamental y cualquier "gotcha" o error común a tener en cuenta.
+    *   Menciona los conceptos clave asociados, sintaxis fundamental y cualquier error común a tener en cuenta.
     *   Explica las ventajas y posibles casos de uso.
     *   Definición y propósito
     *   Cuándo y por qué se utiliza
@@ -38,7 +38,7 @@ Voy a trabajar en un notebook de Jupyter, así que necesito una explicación com
     *   Incluye la salida esperada del código (si es relevante y no muy extensa) para que pueda verificar mis resultados.
     *   Intenta mostrar diferentes facetas o usos comunes del tema a través de los ejemplos.
 
-6.  **Ejercicio Práctico (Desafío Pequeño):**
+6.  **Ejercicio Práctico:**
     *   Propón uno o varios ejercicios o problemas diseñados para aplicar directamente lo aprendido sobre el tema.
     *   El ejercicio debe ser realizable en Jupyter Notebook.
     *   Debe ser lo suficientemente desafiante para hacerme pensar, pero no tan complejo como para desmotivarme.
