@@ -333,74 +333,126 @@
 
 ## 3. Bases de Datos
 
+### Fundamentos de Bases de Datos
+
+1. [ ] **1. Introducción a las Bases de Datos**  
+   - **Descripción:** Qué son las bases de datos, por qué se utilizan, ventajas sobre archivos planos. Tipos de bases de datos (Relacionales, NoSQL: Documentales, Clave-Valor, Orientadas a Columnas, Grafos, Series Temporales).  
+   - [Notebook](../3._Bases_de_Datos/Fundamentos/notebooks/01_introduccion_bases_datos.ipynb)  
+   - Librerías/Herramientas: Conceptual  
+
+2. [ ] **2. Conceptos Clave de Bases de Datos Relacionales**  
+   - **Descripción:** Tablas, filas (registros), columnas (campos), llaves primarias, llaves foráneas, índices básicos, restricciones (NOT NULL, UNIQUE, CHECK).  
+   - [Notebook](../3._Bases_de_Datos/Fundamentos/notebooks/02_conceptos_clave_relacionales.ipynb)  
+   - Librerías/Herramientas: `sqlite3` (cliente SQL), `psycopg2`, `mysql-connector-python`  
+
+3. [ ] **3. Introducción a SQL (Lenguaje de Consulta Estructurado)**  
+   - **Descripción:** Comandos DQL básicos (`SELECT`, `FROM`, `WHERE`, `ORDER BY`, `GROUP BY`, `HAVING`), DML (`INSERT`, `UPDATE`, `DELETE`), DDL (`CREATE TABLE`, `ALTER TABLE`, `DROP TABLE`). Joins básicos (`INNER`, `LEFT`, `RIGHT`).  
+   - [Notebook](../3._Bases_de_Datos/Fundamentos/notebooks/03_introduccion_sql.ipynb)  
+   - Librerías: `sqlite3`, `psycopg2`, `mysql-connector-python`  
+
 ### Modelado
-1. [ ] **1. Normalización**  
-   - [Notebook](../3._Bases_de_Datos/Modelado/notebooks/01_normalizacion.ipynb)  
+1. [ ] **1. Modelado SQL**
+   - **Descripción:** Creación de esquemas para bases de datos relacionales. Incluye la identificación de entidades, atributos, relaciones (uno a uno, uno a muchos, muchos a muchos) y su representación mediante diagramas Entidad-Relación (ERD). Definición de tablas, columnas, tipos de datos, y restricciones. 
+   - [Notebook](../3._Bases_de_Datos/Modelado/notebooks/01_modelado_sql.ipynb)  
    - Librerías: *No específicas*  
-2. [ ] **2. Modelado NoSQL**  
+2. [ ] **2. Normalización**
+   - **Descripción:** Proceso de organizar los datos en una base de datos relacional para reducir la redundancia y mejorar la integridad de los datos. Cubre las formas normales (1NF, 2NF, 3NF, BCNF) y sus objetivos.
+   - [Notebook](../3._Bases_de_Datos/Modelado/notebooks/02_normalizacion.ipynb)  
+   - Librerías: *No específicas* 
+2. [ ] **2. Modelado NoSQL**
+   - **Descripción:** Principios y técnicas para diseñar esquemas en bases de datos NoSQL, considerando los patrones de acceso, la necesidad de denormalización, y las características específicas de cada tipo (documental, clave-valor, etc.). Con `pymongo`, se enfoca en bases de datos documentales.
    - [Notebook](../3._Bases_de_Datos/Modelado/notebooks/02_modelado_nosql.ipynb)  
    - Librerías: `pymongo`  
-3. [ ] **3. Modelado SQL**  
-   - [Notebook](../3._Bases_de_Datos/Modelado/notebooks/03_modelado_sql.ipynb)  
-   - Librerías: *No específicas*  
-4. [ ] **4. Bases de Datos de Serie Temporal**  
+4. [ ] **4. Bases de Datos de Serie Temporal**
+   - **Descripción:** Diseño de esquemas y consideraciones específicas para el almacenamiento y consulta eficiente de datos indexados por tiempo (métricas, logs, datos de sensores). Introducción a tecnologías como InfluxDB y TimescaleDB.
    - [Notebook](../3._Bases_de_Datos/Modelado/notebooks/04_serie_temporal.ipynb)  
    - Tecnologías: InfluxDB, TimescaleDB  
-5. [ ] **5. Bases de Datos en Grafos**  
+5. [ ] **5. Bases de Datos en Grafos**
+   -  **Descripción:** Modelado de datos como una red de nodos y relaciones (aristas), ideal para representar y consultar datos altamente interconectados (redes sociales, recomendaciones, detección de fraude).
    - [Notebook](../3._Bases_de_Datos/Modelado/notebooks/05_bases_grafos.ipynb)  
    - Tecnologías: Neo4j, JanusGraph  
 
 
 ### SQL Avanzado
-1. [ ] **1. Consultas Complejas**  
+1. [ ] **1. Consultas Complejas**
+   - **Descripción:** Uso avanzado de SQL para extraer información compleja: subconsultas (correlacionadas y no correlacionadas), Common Table Expressions (CTEs), funciones de ventana (window functions), JOINs avanzados (self-join, cross-join), operaciones PIVOT/UNPIVOT (si el SGBD lo soporta o mediante CASE).
    - [Notebook](../3._Bases_de_Datos/SQL_Avanzado/notebooks/01_consultas_complejas.ipynb)  
    - Librerías: *No específicas* (clientes: `psycopg2`, `mysql-connector-python`)  
-2. [ ] **2. Optimización de Consultas**  
+2. [ ] **2. Optimización de Consultas**
+   - **Descripción:** Técnicas para mejorar el rendimiento de las consultas SQL. Análisis de planes de ejecución (`EXPLAIN`), creación y uso efectivo de índices (B-tree, hash, GIN, GiST, etc.), reescritura de consultas, estadísticas de la base de datos.
    - [Notebook](../3._Bases_de_Datos/SQL_Avanzado/notebooks/02_optimizacion_consultas.ipynb)  
    - Herramientas: `EXPLAIN`, `pgcli`  
-3. [ ] **3. Data Warehousing y OLAP**  
+3. [ ] **3. Data Warehousing y OLAP**
+   - **Descripción:** Conceptos de almacenamiento de datos para análisis (Data Warehouse). Diferencias entre OLTP y OLAP. Modelado dimensional (esquemas de estrella y copo de nieve). Operaciones OLAP (slice, dice, drill-down, roll-up). Introducción a plataformas de DWH.
    - [Notebook](../3._Bases_de_Datos/SQL_Avanzado/notebooks/03_data_warehousing_olap.ipynb)  
    - Herramientas: Snowflake, Amazon Redshift  
-4. [ ] **4. ETL y Calidad de Datos**  
+4. [ ] **4. ETL y Calidad de Datos**
+   - **Descripción:** Procesos de Extracción, Transformación y Carga donde SQL juega un papel importante (especialmente en la 'T'). Técnicas de limpieza, validación y enriquecimiento de datos usando SQL. Introducción a herramientas de orquestación y calidad.
    - [Notebook](../3._Bases_de_Datos/SQL_Avanzado/notebooks/04_etl_calidad_datos.ipynb)  
    - Herramientas: Apache Airflow, Great Expectations  
 
 
 ### NoSQL Avanzado
-1. [ ] **1. Modelado de Documentos**  
+1. [ ] **1. Modelado de Documentos**
+   - **Descripción:** Patrones de diseño avanzados para bases de datos documentales (ej. MongoDB). Manejo de relaciones (embedding vs referencing), estrategias de indexación, consideraciones de rendimiento para diferentes patrones de consulta. Uso de ODMs (Object Document Mappers).
    - [Notebook](../3._Bases_de_Datos/NoSQL_Avanzado/notebooks/01_modelado_documentos.ipynb)  
    - Librerías: `pymongo`, `mongoengine`  
-2. [ ] **2. Bases de Datos de Grafos**  
+2. [ ] **2. Bases de Datos de Grafos**
+   - **Descripción:** Interacción y consulta de bases de datos de grafos. Lenguajes de consulta como Cypher (para Neo4j) o Gremlin. Casos de uso avanzados y algoritmos de grafos.
    - [Notebook](../3._Bases_de_Datos/NoSQL_Avanzado/notebooks/02_nosql_grafos.ipynb)  
    - Librerías: `neo4j`, `py2neo`  
-3. [ ] **3. Bases de Datos en Memoria**  
+3. [ ] **3. Bases de Datos en Memoria**
+   - **Descripción:** Uso de bases de datos que almacenan datos principalmente en RAM para alta velocidad (ej. Redis, Memcached). Casos de uso: caching, gestión de sesiones, contadores, colas. Estructuras de datos avanzadas en Redis. Persistencia.
    - [Notebook](../3._Bases_de_Datos/NoSQL_Avanzado/notebooks/03_bases_memoria.ipynb)  
    - Librerías: `redis-py`  
 
 
 ### Integración de Datos
 1. [ ] **1. ETL y Pipelines**  
+   - **Descripción:** Diseño e implementación de flujos de trabajo para extraer, transformar y cargar datos desde diversas fuentes (bases de datos, APIs, archivos) a destinos (data warehouses, data lakes, otras bases de datos). Herramientas de orquestación.  
    - [Notebook](../3._Bases_de_Datos/Integracion_de_Datos/notebooks/01_etl_pipelines.ipynb)  
-   - Librerías: `apache-airflow`, `prefect`, `luigi`  
+   - Librerías: `apache-airflow`, `prefect`, `luigi`
 2. [ ] **2. Data Warehousing**  
+   - **Descripción:** Construcción y mantenimiento de Data Warehouses. Procesos de ingesta de datos, transformaciones para el modelo dimensional, carga de datos. `sqlalchemy` puede usarse para interactuar programáticamente con el DWH.  
    - [Notebook](../3._Bases_de_Datos/Integracion_de_Datos/notebooks/02_data_warehousing_integration.ipynb)  
-   - Librerías: `sqlalchemy`  
+   - Librerías: `sqlalchemy`
+3. [ ] **3. Data Lakes**  
+   - **Descripción:** Concepto, arquitectura, ventajas y desventajas. Almacenamiento de datos brutos y procesados. Herramientas y tecnologías asociadas (ej. S3, HDFS, Delta Lake).  
+   - [Notebook](../3._Bases_de_Datos/Integracion_de_Datos/notebooks/03_data_lakes.ipynb)  
+   - Tecnologías: AWS S3, Azure Data Lake Storage, Apache Hudi/Iceberg/Delta Lake
+4. [ ] **4. Streaming de Datos / Procesamiento en Tiempo Real**  
+   - **Descripción:** Introducción a la ingesta y procesamiento de flujos de datos continuos. Casos de uso.  
+   - [Notebook](../3._Bases_de_Datos/Integracion_de_Datos/notebooks/04_streaming_datos.ipynb)  
+   - Tecnologías: Apache Kafka, Apache Flink / Spark Streaming / Kafka Streams
+5. [ ] **5. Formatos de Datos para Intercambio y Almacenamiento Eficiente**  
+   - **Descripción:** Formatos como Avro, Parquet, ORC y sus ventajas en pipelines de datos (compresión, esquemas, rendimiento de lectura).  
+   - [Notebook](../3._Bases_de_Datos/Integracion_de_Datos/notebooks/05_formatos_datos.ipynb)  
+   - Tecnologías: Avro, Parquet, ORC
+6. [ ] **6. Virtualización de Datos**  
+   - **Descripción:** Concepto de acceder a datos de múltiples fuentes como si fuera una sola, sin moverlos físicamente.  
+   - [Notebook](../3._Bases_de_Datos/Integracion_de_Datos/notebooks/06_virtualizacion_datos.ipynb)  
+   - Tecnologías: Denodo, Presto/Trino  
 
 
 ### Administración
-1. [ ] **1. Instalación y Configuración**  
+1. [ ] **1. Instalación y Configuración**
+   - **Descripción:** Procedimientos para instalar y configurar servidores de bases de datos (ej. PostgreSQL, MySQL). Parámetros de configuración iniciales importantes. Gestión de servicios.
    - [Notebook](../3._Bases_de_Datos/Administracion/notebooks/01_instalacion_configuracion.ipynb)  
    - Herramientas: `psycopg2`, `mysqlclient`  
-2. [ ] **2. Backup y Recuperación**  
+2. [ ] **2. Backup y Recuperación**
+   - **Descripción:** Estrategias y herramientas para realizar copias de seguridad (full, incremental, diferencial) y restaurar datos. Point-in-Time Recovery (PITR).
    - [Notebook](../3._Bases_de_Datos/Administracion/notebooks/02_backup_recuperacion.ipynb)  
    - Herramientas: `pg_dump`  
-3. [ ] **3. Replicación**  
+3. [ ] **3. Replicación**
+   - **Descripción:** Configuración de réplicas de solo lectura para escalabilidad de lectura y redundancia. Replicación en streaming (física) vs. lógica.
    - [Notebook](../3._Bases_de_Datos/Administracion/notebooks/03_replicacion.ipynb)  
    - Herramientas: `repmgr`, configuración nativa de PostgreSQL  
-4. [ ] **4. Seguridad y Roles**  
+4. [ ] **4. Seguridad y Roles**
+   - **Descripción:** Gestión de usuarios, roles y permisos (GRANT, REVOKE). Métodos de autenticación. Seguridad a nivel de red (firewalls, SSL/TLS para conexiones). Encriptación de datos en reposo y en tránsito. Auditoría. 
    - [Notebook](../3._Bases_de_Datos/Administracion/notebooks/04_seguridad_roles.ipynb)  
    - Conceptos: encriptación en reposo, gestión de roles  
-5. [ ] **5. Replicación Multimaestro y Alta Disponibilidad**  
+5. [ ] **5. Replicación Multimaestro y Alta Disponibilidad**
+   - **Descripción:** Configuración de sistemas donde múltiples nodos pueden aceptar escrituras. Estrategias para lograr alta disponibilidad y failover automático.
    - [Notebook](../3._Bases_de_Datos/Administracion/notebooks/05_replicacion_multimaestro_ha.ipynb)  
    - Tecnologías: Galera Cluster, Patroni  
 
@@ -408,73 +460,155 @@
 ## 4. Cloud Computing (AWS)
 
 ### 1. Nivel Básico
-1. [ ] **1. Conceptos de la Nube**  
+1. [ ] **1. Conceptos de la Nube**
+   - **Descripción:** Entiende qué es el cloud computing, sus modelos de servicio (IaaS, PaaS, SaaS), modelos de despliegue (público, privado, híbrido), beneficios clave y cómo se estructura la infraestructura global de AWS (Regiones, Zonas de Disponibilidad, Edge Locations).
    - [Notebook](../4._Cloud_Computing/1._Nivel_Básico/aws/notebooks/01_conceptos_nube.ipynb)  
    - Librerías: *No específicas*  
-2. [ ] **2. IAM**  
-   - [Notebook](../4._Cloud_Computing/1._Nivel_Básico/aws/notebooks/02_iam.ipynb)  
-   - Librerías: `boto3`  
-3. [ ] **3. Contenedores en la Nube**  
-   - [Notebook](../4._Cloud_Computing/1._Nivel_Básico/aws/notebooks/03_contenedores_nube.ipynb)  
+2.  [ ] **2. Introducción a la Consola de AWS y Servicios Fundamentales (EC2 y S3)**
+    - **Descripción:** Familiarízate con la consola de administración de AWS, aprende a navegar por ella e introduce los conceptos básicos y casos de uso de Amazon EC2 (cómputo virtual) y Amazon S3 (almacenamiento de objetos).
+    - *Podría ser un nuevo notebook o integrado en el de conceptos/IAM.*
+    - Librerías: `awscli` (para exploración básica)
+3.  [ ] **3. IAM (Identity and Access Management)**
+    - **Descripción:** Aprende a gestionar de forma segura el acceso a los servicios y recursos de AWS. Cubre usuarios, grupos, roles, políticas y las mejores prácticas de seguridad como el principio de mínimo privilegio y MFA.
+    - [Notebook](../4._Cloud_Computing/1._Nivel_Básico/aws/notebooks/03_iam.ipynb)
+    - Librerías: `boto3`
+4. [ ] **4. Fundamentos de Contenedores y Primeros Pasos con Amazon ECS/Fargate**
+   - **Descripción:** Introduce los conceptos básicos de la contenerización (ej. Docker) y cómo desplegar y gestionar aplicaciones en contenedores de forma sencilla utilizando Amazon Elastic Container Service (ECS) y AWS Fargate.
+   - [Notebook](../4._Cloud_Computing/1._Nivel_Básico/aws/notebooks/04_contenedores_nube.ipynb)  
    - Servicios: Amazon ECS, AWS Fargate  
 
 
 ### 2. Nivel Intermedio
-1. [ ] **1. Compute y Networking**  
+1. [ ] **1. Compute y Networking**
+   - **Descripción:** Explora en detalle Amazon EC2: tipos de instancias, imágenes (AMIs), volúmenes EBS, grupos de seguridad, y cómo escalar aplicaciones automáticamente con Auto Scaling Groups y distribuir el tráfico con Elastic Load Balancing (ALB, NLB).
    - [Notebook](../4._Cloud_Computing/2._Nivel_Intermedio/aws/notebooks/01_compute_networking.ipynb)  
-   - Librerías: `boto3`, `awscli`  
-2. [ ] **2. Storage y Bases de Datos Gestionadas**  
-   - [Notebook](../4._Cloud_Computing/2._Nivel_Intermedio/aws/notebooks/02_storage_bases_datos.ipynb)  
-   - Librerías: `boto3`  
-3. [ ] **3. Orquestación con Kubernetes**  
-   - [Notebook](../4._Cloud_Computing/2._Nivel_Intermedio/aws/notebooks/03_orquestacion_kubernetes.ipynb)  
+   - Librerías: `boto3`, `awscli`
+   - Servicios: EC2 (Tipos de instancia, AMIs, EBS, Security Groups, Key Pairs, Auto Scaling Groups), ELB (ALB, NLB).
+2.  [ ] **2. Networking Avanzado con VPC**
+    - **Descripción:** Domina la creación y gestión de redes privadas virtuales (VPC) en AWS, incluyendo subredes, tablas de rutas, gateways (Internet, NAT), listas de control de acceso a la red (NACLs), VPC Endpoints y VPC Peering.
+    - [Notebook](../4._Cloud_Computing/2._Nivel_Intermedio/aws/notebooks/02_compute_networking_vpc.ipynb)
+    - Librerías: `boto3`, `awscli`
+    - Servicios: VPC (Subredes públicas/privadas, Tablas de rutas, Internet Gateway, NAT Gateway, NACLs, VPC Endpoints, Peering).
+3. [ ] **3. Storage y Bases de Datos Gestionadas**
+   - **Descripción:** Profundiza en los servicios de almacenamiento: S3 (clases, versionado, ciclo de vida), EBS (tipos, snapshots), EFS y Glacier. Explora bases de datos gestionadas: RDS para bases de datos relacionales (MySQL, PostgreSQL, etc.) y DynamoDB para NoSQL.
+   - [Notebook](../4._Cloud_Computing/2._Nivel_Intermedio/aws/notebooks/03_storage_bases_datos.ipynb)  
+   - Librerías: `boto3`
+   - Servicios: S3 (Clases de almacenamiento, Versionado, Ciclo de vida, Replicación), EBS (Tipos de volúmenes, Snapshots), EFS, Glacier, RDS (Motores, Multi-AZ, Read Replicas), DynamoDB.
+4. [ ] **4. Orquestación con Kubernetes**
+   - **Descripción:** Aprende a desplegar, gestionar y escalar aplicaciones en contenedores utilizando Kubernetes en AWS a través de Amazon Elastic Kubernetes Service (EKS).
+   - [Notebook](../4._Cloud_Computing/2._Nivel_Intermedio/aws/notebooks/04_orquestacion_kubernetes.ipynb)  
    - Servicios: Amazon EKS  
-4. [ ] **4. CI/CD en AWS**  
-   - [Notebook](../4._Cloud_Computing/2._Nivel_Intermedio/aws/notebooks/04_cicd_aws.ipynb)  
-   - Herramientas: CodePipeline, CodeBuild  
-
+5. [ ] **5. CI/CD en AWS**
+    - **Descripción:** Implementa pipelines de integración continua y entrega continua (CI/CD) utilizando el conjunto de herramientas de DevOps de AWS: CodeCommit (control de versiones), CodeBuild (compilación), CodeDeploy (despliegue) y CodePipeline (orquestación del pipeline).
+    - [Notebook](../4._Cloud_Computing/2._Nivel_Intermedio/aws/notebooks/04_cicd_aws.ipynb)  
+    - Herramientas: CodePipeline, CodeBuild
+6.  [ ] **6. Gestión de Costos y Optimización en AWS**
+    - **Descripción:** Aprende a monitorizar, controlar y optimizar tus gastos en AWS utilizando herramientas como Cost Explorer y AWS Budgets, y aplicando buenas prácticas como el etiquetado de recursos.
+    - [Notebook](../4._Cloud_Computing/2._Nivel_Intermedio/aws/notebooks/05_gestion_costos_aws.ipynb) `(nombre de notebook sugerido)`
+    - Herramientas: AWS Cost Explorer, AWS Budgets, Tagging, Trusted Advisor (pilar de costos).
+7.  [ ] **7. AWS Well-Architected Framework**
+    - **Descripción:** Comprende los pilares del AWS Well-Architected Framework (Excelencia Operativa, Seguridad, Fiabilidad, Eficiencia del Rendimiento, Optimización de Costos) para diseñar y operar sistemas robustos y eficientes en la nube.
 
 ### 3. Nivel Avanzado
-1. [ ] **1. Serverless**  
+1. [ ] **1. Serverless**
+   - **Descripción:** Diseña y despliega aplicaciones sin servidor (serverless) utilizando AWS Lambda para el cómputo, API Gateway para la exposición de APIs, Step Functions para la orquestación de flujos de trabajo, y servicios de mensajería como SQS/SNS y EventBridge para arquitecturas basadas en eventos.
    - [Notebook](../4._Cloud_Computing/3._Nivel_Avanzado/aws/notebooks/01_serverless.ipynb)  
-   - Librerías: `boto3`, `chalice`  
-2. [ ] **2. Infraestructura como Código**  
+   - Librerías: `boto3`, `chalice`
+   - Servicios: AWS Lambda, API Gateway, Step Functions, DynamoDB (como backend común), EventBridge, SQS, SNS.
+2. [ ] **2. Infraestructura como Código**
+   - **Descripción:** Automatiza el aprovisionamiento y la gestión de tu infraestructura en AWS utilizando código. Compara y utiliza herramientas populares como AWS CloudFormation (nativo), AWS Cloud Development Kit (CDK) y Terraform (multi-nube).
    - [Notebook](../4._Cloud_Computing/3._Nivel_Avanzado/aws/notebooks/02_infraestructura_codigo.ipynb)  
-   - Herramientas: `aws-cdk`, `cloudformation`, `terraform`  
+   - Herramientas: `aws-cdk`, `cloudformation`, `terraform`
 3. [ ] **3. Monitorización y Seguridad**  
    - [Notebook](../4._Cloud_Computing/3._Nivel_Avanzado/aws/notebooks/03_Monitorizacion_y_seguridad.ipynb)  
+4.  [ ] **4. Seguridad Avanzada y Gobierno en AWS**
+    - **Descripción:** Profundiza en las mejores prácticas y servicios de seguridad de AWS. Cubre la gestión avanzada de identidades (IAM), protección contra ataques (WAF, Shield), gestión de secretos y claves (KMS, Secrets Manager), detección de amenazas (GuardDuty), gestión de la postura de seguridad (Security Hub), cumplimiento (Config) y evaluación de vulnerabilidades (Inspector).
+    - [Notebook](../4._Cloud_Computing/3._Nivel_Avanzado/aws/notebooks/04_Seguridad_avanzada.ipynb)
+    - Servicios: IAM (Roles Avanzados, Federación), AWS WAF, AWS Shield, AWS KMS, AWS Secrets Manager, Amazon GuardDuty, AWS Security Hub, AWS Config, Amazon Inspector.
+5.  [ ] **5. Arquitecturas de Alta Disponibilidad y Recuperación ante Desastres (HA/DR)**
+    - **Descripción:** Diseña arquitecturas resilientes que aseguren la alta disponibilidad y la continuidad del negocio. Aprende sobre estrategias de recuperación ante desastres (RTO/RPO), el uso de múltiples Zonas de Disponibilidad y Regiones, y servicios como Route 53 para failover y AWS Backup/DRS para la protección de datos.
+    - [Notebook](../4._Cloud_Computing/3._Nivel_Avanzado/aws/notebooks/05_HA_DR_aws.ipynb)
+    - Servicios/Conceptos: Route 53 (failover, enrutamiento), Multi-AZ y Multi-Region, RTO/RPO, estrategias de backup y restauración, AWS Backup, Elastic Disaster Recovery (AWS DRS).
+6.  [ ] **6. Patrones de Diseño en la Nube y Mejores Prácticas de Arquitectura**
+    - **Descripción:** Explora patrones de diseño comunes para construir aplicaciones escalables, desacopladas y resilientes en AWS (ej. microservicios, event-driven, fan-out, circuit breaker), y revisa las mejores prácticas de arquitectura más allá del Well-Architected Framework.
+
 
 
 ## 5. Desarrollo Web con Python
 
 ### 1. Nivel Básico
-1. [ ] **1. Introducción a HTTP y Servidores**  
-   - [Notebook](../5._Desarrollo_Web_con_Python/1._Nivel_Básico/notebooks/01_introduccion_http_servidores.ipynb)  
-   - Librerías: `http.server`, `requests`  
-2. [ ] **2. Microframeworks**  
-   - [Notebook](../5._Desarrollo_Web_con_Python/1._Nivel_Básico/notebooks/02_microframeworks.ipynb)  
-   - Librerías: `Flask`, `FastAPI`  
-
+1. [ ] **1. Fundamentos del Desarrollo Web**
+    - **Descripción:** Repaso conceptual de cómo funciona la web: roles de HTML (estructura), CSS (presentación) y JavaScript (interactividad en el cliente). Entender la arquitectura cliente -servidor y el rol de Python en el backend.
+    - [Notebook](../5._Desarrollo_Web_con_Python/1._Nivel_Básico/notebooks/01_fundamentos.)
+2.  [ ] **2. Introducción a HTTP, Servidores Web y APIs**
+    - **Descripción:** Comprende los fundamentos del protocolo HTTP (métodos, cabeceras, códigos de estado), cómo funciona un servidor web básico y la comunicación cliente -servidor. Realiza tus primeras peticiones HTTP con `requests`. Introduce el concepto de API.
+    - [Notebook](../5._Desarrollo_Web_con_Python/1._Nivel_Básico/notebooks/01_introduccion_http_servidores.ipynb)
+    - Librerías: `http.server`, `requests`.
+3.  [ ] **3. Desarrollo con Microframeworks: Flask**
+    - **Descripción:** Comienza a construir aplicaciones web con Flask. Aprende sobre rutas, manejo de peticiones (GET, POST), plantillas con Jinja2 para generar HTML dinámico y manejo básico de formularios.
+    - [Notebook](../5._Desarrollo_Web_con_Python/1._Nivel_Básico/notebooks/02_flask_basico.ipynb)
+    - Librerías: `Flask`, `Jinja2`.
+4.  [ ] **4. Desarrollo con Microframeworks Modernos: FastAPI**
+    - **Descripción:** Explora FastAPI para construir APIs de alto rendimiento. Aprende sobre rutas, validación de datos con Pydantic, la documentación automática de APIs (Swagger UI/ReDoc) y los fundamentos de la programación asíncrona en el contexto web.
+    - [Notebook](../5._Desarrollo_Web_con_Python/1._Nivel_Básico/notebooks/03_fastapi_basico.ipynb)
+    - Librerías: `FastAPI`, `Uvicorn`, `Pydantic`.
 
 ### 2. Nivel Intermedio
-1. [ ] **1. Frameworks Completos**  
-   - [Notebook](../5._Desarrollo_Web_con_Python/2._Nivel_Intermedio/notebooks/01_frameworks_completos.ipynb)  
-   - Librerías: `Django`, `Tortoise ORM`  
-2. [ ] **2. APIs REST y GraphQL**  
-   - [Notebook](../5._Desarrollo_Web_con_Python/2._Nivel_Intermedio/notebooks/02_apis_rest_graphql.ipynb)  
-   - Librerías: `Django REST Framework`, `graphene`  
+1.  [ ] **1. Frameworks Completos: Django - Fundamentos**
+    - **Descripción:** Sumérgete en Django, un framework "con baterías incluidas". Aprende su estructura de proyectos y aplicaciones, el potente ORM de Django para interactuar con bases de datos, el sistema de migraciones y el panel de administración automático.
+    - [Notebook](../5._Desarrollo_Web_con_Python/2._Nivel_Intermedio/notebooks/01_django_fundamentos.ipynb)
+    - Librerías/Conceptos: `Django` (Proyectos, Apps, ORM, Migraciones, Admin).
+2.  [ ] **2. Django - Vistas, Plantillas y Formularios**
+    - **Descripción:** Profundiza en cómo Django maneja la lógica de negocio con vistas (basadas en funciones y clases), cómo renderiza contenido dinámico usando su sistema de plantillas y cómo gestiona la entrada de datos del usuario a través de formularios.
+    - [Notebook](../5._Desarrollo_Web_con_Python/2._Nivel_Intermedio/notebooks/02_django_vistas_templates_forms.ipynb)
+    - Librerías/Conceptos: `Django` (Vistas basadas en funciones y clases, Sistema de plantillas de Django, Formularios).
+3.  [ ] **3. Django - Autenticación y Autorización**
+    - **Descripción:** Implementa sistemas de autenticación (registro, inicio de sesión, cierre de sesión) y autorización (gestión de permisos y grupos) utilizando las robustas herramientas incorporadas en Django.
+    - [Notebook](../5._Desarrollo_Web_con_Python/2._Nivel_Intermedio/notebooks/03_django_auth.ipynb)
+    - Librerías/Conceptos: `Django` (Sistema de autenticación de usuarios, permisos, grupos).
+4.  [ ] **4. Desarrollo de APIs REST con Django REST Framework (DRF)**
+    - **Descripción:** Construye APIs RESTful robustas y escalables sobre Django utilizando Django REST Framework. Aprende sobre serializadores, vistas (ViewSets), routers, y autenticación/permisos para APIs.
+    - [Notebook](../5._Desarrollo_Web_con_Python/2._Nivel_Intermedio/notebooks/04_apis_rest_drf.ipynb)
+    - Librerías: `Django REST Framework`.
+5.  [ ] **5. Introducción a GraphQL con Python**
+    - **Descripción:** Entiende los principios de GraphQL como alternativa a REST. Aprende a definir esquemas, tipos, queries y mutations para construir APIs flexibles con Graphene (integrado con Django) o Strawberry.
+    - [Notebook](../5._Desarrollo_Web_con_Python/2._Nivel_Intermedio/notebooks/05_apis_graphql.ipynb)
+    - Librerías: `graphene-django` (para Django) o `strawberry-graphql` (más moderno, puede usarse con FastAPI/Flask/Django).
 
 
 ### 3. Nivel Avanzado
-1. [ ] **1. WebSockets y Tiempo Real**  
-   - [Notebook](../5._Desarrollo_Web_con_Python/3._Nivel_Avanzado/notebooks/01_websockets_real_time.ipynb)  
-   - Librerías: `socket.io`, `starlette`  
-2. [ ] **2. Escalabilidad y Cacheo**  
-   - [Notebook](../5._Desarrollo_Web_con_Python/3._Nivel_Avanzado/notebooks/02_escalabilidad_cacheo.ipynb)  
-   - Herramientas: Redis, RabbitMQ, Kafka  
+
+1.  [ ] **1. Programación Asíncrona en Python**
+    -   **Descripción:** Domina los conceptos de programación asíncrona en Python utilizando `asyncio`, `async` y `await`. Entiende los bucles de eventos, corrutinas y tareas, esenciales para aplicaciones web de alta concurrencia.
+    -   [Notebook](../5._Desarrollo_Web_con_Python/3._Nivel_Avanzado/notebooks/01_programacion_asincrona.ipynb)
+    -   Librerías: `asyncio`.
+2.  [ ] **2. WebSockets y Comunicación en Tiempo Real**
+    -   **Descripción:** Implementa comunicación bidireccional en tiempo real entre el cliente y el servidor utilizando WebSockets. Explora casos de uso como chats, notificaciones en vivo y dashboards dinámicos con librerías adecuadas para tu framework elegido.
+    -   [Notebook](../5._Desarrollo_Web_con_Python/3._Nivel_Avanzado/notebooks/02_websockets_real_time.ipynb)
+    -   Librerías: `FastAPI WebSockets` / `Starlette WebSockets`, `python-socketio` (con Flask/Django), `channels` (para Django).
+3.  [ ] **3. Colas de Tareas Asíncronas con Celery y Message Brokers**
+    -   **Descripción:** Aprende a desacoplar y escalar tu aplicación web mediante el uso de colas de tareas asíncronas con Celery. Entiende el papel de los message brokers como Redis o RabbitMQ para gestionar tareas en segundo plano y mejorar la responsividad.
+    -   [Notebook](../5._Desarrollo_Web_con_Python/3._Nivel_Avanzado/notebooks/03_celery_message_brokers.ipynb) 
+    -   Herramientas/Librerías: `Celery`, `Redis` (como broker/backend), `RabbitMQ` (como broker).
+4.  [ ] **4. Estrategias de Cacheo Avanzado**
+    -   **Descripción:** Implementa diversas estrategias de cacheo (en memoria, en base de datos, distribuido con Redis/Memcached) para optimizar el rendimiento de tu aplicación web, reduciendo la carga en la base de datos y los tiempos de respuesta.
+    -   [Notebook](../5._Desarrollo_Web_con_Python/3._Nivel_Avanzado/notebooks/04_cacheo_avanzado.ipynb) 
+    -   Herramientas/Librerías: `Redis`, `Memcached`, cacheo a nivel de framework (Django cache framework).
+5.  [ ] **5. Seguridad en Aplicaciones Web**
+    -   **Descripción:** Conoce las vulnerabilidades web más comunes (basadas en el OWASP Top 10) y aprende las mejores prácticas y herramientas que ofrecen los frameworks de Python para prevenir ataques y construir aplicaciones seguras.
+    -   [Notebook](../5._Desarrollo_Web_con_Python/3._Nivel_Avanzado/notebooks/05_seguridad_web.ipynb) 
+    -   Conceptos: XSS, CSRF, SQL Injection, Insecure Deserialization, etc., y cómo los frameworks ayudan a mitigar.
+6.  [ ] **6. Testing de Aplicaciones Web en Python**
+    -   **Descripción:** Aprende a escribir pruebas unitarias, de integración y funcionales (end-to-end) para tus aplicaciones web Python, utilizando `unittest`, `pytest` y las utilidades de testing que proveen los frameworks.
+    -   [Notebook](../5._Desarrollo_Web_con_Python/3._Nivel_Avanzado/notebooks/06_testing_web.ipynb) 
+    -   Librerías: `unittest`, `pytest`, `Selenium` (para E2E), herramientas de testing de frameworks (Django Test Client, FastAPI TestClient).
+7.  [ ] **7. Despliegue de Aplicaciones Python (WSGI/ASGI, Contenedores)**
+    -   **Descripción:** Entiende cómo desplegar tus aplicaciones web Python en entornos de producción. Cubre servidores WSGI/ASGI (Gunicorn, Uvicorn), el uso de un proxy inverso como Nginx, y la contenerización con Docker para facilitar el despliegue y la escalabilidad.
+    -   [Notebook](../5._Desarrollo_Web_con_Python/3._Nivel_Avanzado/notebooks/07_despliegue_python_web.ipynb) 
+    -   Herramientas/Conceptos: Gunicorn, Uvicorn, Nginx, Docker, principios de CI/CD para web.
 
 
-## 6. DevOps y Contenedores
+## 6. DevOps y Contenedores --pendiente actulizar
 
 ### 1. Nivel Básico
 1. [ ] **1. Introducción a Docker**  
