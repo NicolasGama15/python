@@ -5,7 +5,6 @@ Hoy quiero aprender sobre el siguiente tema de Python. Voy a estudiar y practica
 **TEMA A APRENDER HOY:**
 [TEMA_AQUÍ]
 
-
 **POR FAVOR, PARA EL TEMA PROPORCIONADO, GENERA UNA RESPUESTA ESTRUCTURADA DE LA SIGUIENTE MANERA:**
 
 Voy a trabajar en un notebook de Jupyter, así que necesito una explicación completa que incluya:
@@ -52,6 +51,9 @@ Voy a trabajar en un notebook de Jupyter, así que necesito una explicación com
 
 8.  **Aplicaciones en el Mundo Real**
     - Menciona brevemente 1-2 ejemplos de cómo este tema se aplica en proyectos o situaciones reales si aplica.
+
+9. **cheat sheet**
+    - Genera un listado con las funciones, metodos y todo lo necesario (solo a nivel de codigo) de la librerias relacionadas en la clase de hoy ademas de incluir una breve descripción de que hace la funcion/metodo
 
 **Consideraciones Adicionales para tus Respuestas:**
 *   **Formato:** Utiliza Markdown de forma clara y organizada (encabezados, listas, bloques de código con ```python ... ```).
